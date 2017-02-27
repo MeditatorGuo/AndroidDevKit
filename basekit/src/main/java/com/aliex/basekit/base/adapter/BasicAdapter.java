@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 import com.aliex.basekit.base.adapter.helper.HelperViewHolder;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * description: <br/>
  */
 
-public abstract class BasicAdapter<T> extends android.widget.BaseAdapter {
+public abstract class BasicAdapter<T> extends BaseAdapter {
 
     protected LayoutInflater mInflater;
     protected Context mContext;

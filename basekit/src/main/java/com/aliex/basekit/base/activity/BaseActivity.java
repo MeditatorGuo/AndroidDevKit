@@ -3,6 +3,7 @@ package com.aliex.basekit.base.activity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.aliex.basekit.base.iview.IBaseView;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 /**
  * author: Aliex <br/>
@@ -10,7 +11,7 @@ import com.aliex.basekit.base.iview.IBaseView;
  * description:  <br/>
  */
 
-public class BaseActivity extends AppCompatActivity implements IBaseView{
+public class BaseActivity extends RxAppCompatActivity implements IBaseView{
 
 
 
