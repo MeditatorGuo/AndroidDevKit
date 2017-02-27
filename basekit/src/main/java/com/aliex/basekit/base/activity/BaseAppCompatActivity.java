@@ -21,12 +21,6 @@ public abstract class BaseAppCompatActivity extends RxAppCompatActivity implemen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(this.getLayoutId());
-        ButterKnife.bind(this);
-        initToolbar(savedInstanceState);
-        initViews(savedInstanceState);
-        initData();
-        initListeners();
     }
 
     @Override
@@ -63,21 +57,6 @@ public abstract class BaseAppCompatActivity extends RxAppCompatActivity implemen
     protected void onDestroy() {
         super.onDestroy();
     }
-
-    protected abstract int getLayoutId();
-
-    protected <V extends View> V findView(int id) {
-
-        return (V) this.findViewById(id);
-    }
-
-    protected abstract void initViews(Bundle savedInstanceState);
-
-    protected abstract void initData();
-
-    protected abstract void initToolbar(Bundle savedInstanceState);
-
-    protected abstract void initListeners();
 
     @Override
     public void showLoading() {
