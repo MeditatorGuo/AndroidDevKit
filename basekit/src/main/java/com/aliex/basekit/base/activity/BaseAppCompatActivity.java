@@ -1,15 +1,19 @@
 package com.aliex.basekit.base.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.aliex.basekit.base.iview.IBaseView;
+import com.aliex.commonlib.utils.ActivityManagerUtils;
+import com.aliex.commonlib.utils.DrawerToast;
+import com.aliex.commonlib.utils.LoggerUtils;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-
-import butterknife.ButterKnife;
 
 /**
  * author: Aliex <br/>
@@ -17,10 +21,21 @@ import butterknife.ButterKnife;
  * description: <br/>
  */
 
-public abstract class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseView {
+public class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseView {
+
+    private Activity mActivity;
+    private ActivityManagerUtils activityManagerUtils;
+    private DrawerToast mDrawerToast;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivity = this;
+        activityManagerUtils = ActivityManagerUtils.getInstance();
+        activityManagerUtils.pushActivity(this);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉标题栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        mDrawerToast = DrawerToast.getInstance(getApplicationContext());
     }
 
     @Override
@@ -49,6 +64,16 @@ public abstract class BaseAppCompatActivity extends RxAppCompatActivity implemen
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            LoggerUtils.i("ORIENTATION_LANDSCAPE");
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            LoggerUtils.i("ORIENTATION_PORTRAIT");
+        }
+    }
+
+    @Override
     public void finish() {
         super.finish();
     }
@@ -56,6 +81,7 @@ public abstract class BaseAppCompatActivity extends RxAppCompatActivity implemen
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        activityManagerUtils.popAnyActivity(this);
     }
 
     @Override
