@@ -9,8 +9,6 @@ import okhttp3.Cookie;
 
 /**
  * @Description: Cookie序列化对象
- * @author: jeasinlee
- * @date: 16/12/31 17:49.
  */
 public class OkHttpCookies implements Serializable {
     private transient final Cookie cookies;

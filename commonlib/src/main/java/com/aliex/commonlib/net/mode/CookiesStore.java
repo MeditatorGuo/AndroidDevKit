@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.vise.log.ViseLog;
+import com.aliex.commonlib.convert.HexUtil;
+import com.aliex.commonlib.utils.Config;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,22 +18,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import cn.wwah.common.JConfig;
-import cn.wwah.common.convert.HexUtil;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
 /**
  * @Description: Cookie仓库
- * @author: jeasinlee
- * @date: 16/12/31 17:57.
  */
 public class CookiesStore {
     private final Map<String, ConcurrentHashMap<String, Cookie>> cookies;
     private final SharedPreferences cookiePrefs;
 
     public CookiesStore(Context context) {
-        cookiePrefs = context.getSharedPreferences(JConfig.COOKIE_PREFS, 0);
+        cookiePrefs = context.getSharedPreferences(Config.COOKIE_PREFS, 0);
         cookies = new HashMap<>();
         Map<String, ?> prefsMap = cookiePrefs.getAll();
         for (Map.Entry<String, ?> entry : prefsMap.entrySet()) {
@@ -76,7 +73,8 @@ public class CookiesStore {
 
     public List<Cookie> get(HttpUrl url) {
         ArrayList<Cookie> ret = new ArrayList<>();
-        if (cookies.containsKey(url.host())) ret.addAll(cookies.get(url.host()).values());
+        if (cookies.containsKey(url.host()))
+            ret.addAll(cookies.get(url.host()).values());
         return ret;
     }
 
@@ -116,13 +114,14 @@ public class CookiesStore {
     }
 
     protected String encodeCookie(OkHttpCookies cookie) {
-        if (cookie == null) return null;
+        if (cookie == null)
+            return null;
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(os);
             outputStream.writeObject(cookie);
         } catch (IOException e) {
-            ViseLog.d("IOException in encodeCookie" + e.getMessage());
+            // ViseLog.d("IOException in encodeCookie" + e.getMessage());
             return null;
         }
 
@@ -137,9 +136,9 @@ public class CookiesStore {
             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
             cookie = ((OkHttpCookies) objectInputStream.readObject()).getCookies();
         } catch (IOException e) {
-            ViseLog.e("IOException in decodeCookie" + e.getMessage());
+            // ViseLog.e("IOException in decodeCookie" + e.getMessage());
         } catch (ClassNotFoundException e) {
-            ViseLog.e("ClassNotFoundException in decodeCookie" + e.getMessage());
+            // ViseLog.e("ClassNotFoundException in decodeCookie" + e.getMessage());
         }
 
         return cookie;
