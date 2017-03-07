@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -15,13 +16,15 @@ import com.aliex.commonlib.utils.DrawerToast;
 import com.aliex.commonlib.utils.LoggerUtils;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import butterknife.ButterKnife;
+
 /**
  * author: Aliex <br/>
  * created on: 2017/2/27 <br/>
  * description: <br/>
  */
 
-public class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseView {
+public abstract class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseView {
 
     private Activity mActivity;
     private ActivityManagerUtils activityManagerUtils;
@@ -30,38 +33,15 @@ public class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseV
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
         mActivity = this;
         activityManagerUtils = ActivityManagerUtils.getInstance();
         activityManagerUtils.pushActivity(this);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉标题栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mDrawerToast = DrawerToast.getInstance(getApplicationContext());
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
-    }
-
-    @Override
-    public void startActivity(Intent intent) {
-        super.startActivity(intent);
-    }
-
-    @Override
-    public void startActivity(Intent intent, Bundle options) {
-        super.startActivity(intent, options);
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
-        super.startActivityForResult(intent, requestCode);
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
-        super.startActivityForResult(intent, requestCode, options);
-    }
+    protected abstract int getLayoutId();
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -74,28 +54,8 @@ public class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseV
     }
 
     @Override
-    public void finish() {
-        super.finish();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         activityManagerUtils.popAnyActivity(this);
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showExceptions(Throwable ex) {
-
     }
 }

@@ -16,12 +16,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import cn.wwah.common.JLog;
 
 /**
  * @Description: 内存缓存
- * @author: jeasinlee
- * @date: 2016-12-19 15:08
  */
 public class MemoryCache implements ICache {
     private LruCache<String, Object> cache;
@@ -65,7 +62,6 @@ public class MemoryCache implements ICache {
             return (T) cache.get(key);
         } catch (Exception e) {
             e.printStackTrace();
-            JLog.e(e.toString());
         }
         return null;
     }

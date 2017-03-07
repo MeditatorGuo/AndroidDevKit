@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.PowerManager;
 
-import com.vise.log.ViseLog;
 
 /**
  * <!-- 亮屏 -->
@@ -25,7 +24,6 @@ public class WakeLock {
      */
     public boolean isScreenOn() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ECLAIR_MR1) {
-            ViseLog.e("can not call isScreenOn if SDK_INT < 7 ");
             return false;
         } else {
             return powerManager.isScreenOn();
@@ -34,23 +32,18 @@ public class WakeLock {
 
     public void turnScreenOn() {
         //点亮亮屏
-        ViseLog.i("PowerManager.WakeLock : wakeLock.isHeld: " + wakeLock.isHeld());
         if (!wakeLock.isHeld()) {
-            ViseLog.i("PowerManager.WakeLock : 点亮屏幕");
             wakeLock.acquire();
         }
     }
 
     public void turnScreenOff() {
         //释放亮屏
-        ViseLog.i("PowerManager.WakeLock : wakeLock.isHeld: " + wakeLock.isHeld());
         if (wakeLock.isHeld()) {
-            ViseLog.i("PowerManager.WakeLock : 灭掉屏幕");
             try {
                 wakeLock.release();
             } catch (Exception e) {
                 e.printStackTrace();
-                ViseLog.e(e);
             }
         }
     }
@@ -61,7 +54,6 @@ public class WakeLock {
                 wakeLock.release();
             } catch (Exception e) {
                 e.printStackTrace();
-                ViseLog.e(e);
             }
         }
     }

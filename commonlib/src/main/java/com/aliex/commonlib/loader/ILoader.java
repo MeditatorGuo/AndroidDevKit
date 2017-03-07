@@ -7,11 +7,8 @@ import com.aliex.commonlib.utils.Config;
 
 import java.io.File;
 
-
 /**
  * @Description: 图片加载接口
- * @author: <a href="http://xiaoyaoyou1212.360doc.com">DAWI</a>
- * @date: 2016-12-19 15:04
  */
 public interface ILoader {
     void init(Context context);

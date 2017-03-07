@@ -6,8 +6,8 @@ import android.content.Context;
 import android.os.Build;
 import android.text.format.Formatter;
 
-import com.vise.log.ViseLog;
-import cn.wwah.common.FileUtils;
+import com.aliex.commonlib.utils.FileUtils;
+
 
 /**
  * Get memory info.
@@ -58,7 +58,6 @@ public class MemoryUtil {
      */
     public static String printMemInfo() {
         String info = FileUtils.readFile(MEM_INFO_PATH);
-        ViseLog.i("_______  内存信息:   \n" + info);
         return info;
     }
 
@@ -87,7 +86,6 @@ public class MemoryUtil {
         sb.append("\navailMem        :").append(mi.availMem);
         sb.append("\nlowMemory       :").append(mi.lowMemory);
         sb.append("\nthreshold       :").append(mi.threshold);
-        ViseLog.i(sb.toString());
         return mi;
     }
 
