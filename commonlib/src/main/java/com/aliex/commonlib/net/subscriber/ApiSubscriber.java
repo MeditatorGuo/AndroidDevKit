@@ -1,4 +1,4 @@
-package com.aliex.commonlib.net.subscribe;
+package com.aliex.commonlib.net.subscriber;
 
 import android.accounts.NetworkErrorException;
 import android.content.Context;
@@ -17,11 +17,11 @@ import rx.Subscriber;
  * description: <br/>
  */
 
-public abstract class ApiSubscribe<T> extends Subscriber<T> {
+public abstract class ApiSubscriber<T> extends Subscriber<T> {
 
     public WeakReference<Context> contextWeakReference;
 
-    public ApiSubscribe(Context context) {
+    public ApiSubscriber(Context context) {
         contextWeakReference = new WeakReference<Context>(context);
     }
 

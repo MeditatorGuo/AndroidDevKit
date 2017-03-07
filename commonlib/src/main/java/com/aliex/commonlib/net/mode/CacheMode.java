@@ -2,8 +2,6 @@ package com.aliex.commonlib.net.mode;
 
 /**
  * @Description: 缓存模式
- * @author: jeasinlee
- * @date: 16/12/31 14:22.
  */
 public enum CacheMode {
     /**

@@ -2,8 +2,6 @@ package com.aliex.commonlib.net.mode;
 
 /**
  * @Description: 封装的通用服务器返回对象，可自行定义
- * @author: jeasinlee
- * @date: 2016-12-30 16:43
  */
 public class ApiResult<T> {
     private int code;

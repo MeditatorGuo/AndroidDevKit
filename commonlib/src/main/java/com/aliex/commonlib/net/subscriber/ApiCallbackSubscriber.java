@@ -1,4 +1,4 @@
-package com.aliex.commonlib.net.subscribe;
+package com.aliex.commonlib.net.subscriber;
 
 import android.content.Context;
 
@@ -11,11 +11,11 @@ import com.aliex.commonlib.net.exception.ApiException;
  * description: <br/>
  */
 
-public class ApiCallbackSubscribe<T> extends ApiSubscribe<T> {
+public class ApiCallbackSubscriber<T> extends ApiSubscriber<T> {
 
     protected ApiCallback<T> callBack;
 
-    public ApiCallbackSubscribe(Context context, ApiCallback<T> callBack) {
+    public ApiCallbackSubscriber(Context context, ApiCallback<T> callBack) {
         super(context);
         if (callBack == null) {
             throw new NullPointerException("this callback is null!");
