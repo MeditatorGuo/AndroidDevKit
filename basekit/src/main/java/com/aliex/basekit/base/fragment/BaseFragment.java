@@ -42,4 +42,9 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.bind(this, view);
         return view;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

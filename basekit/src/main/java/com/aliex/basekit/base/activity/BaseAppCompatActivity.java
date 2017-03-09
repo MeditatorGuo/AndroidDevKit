@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.aliex.basekit.base.iview.IBaseView;
+import com.aliex.basekit.base.presenter.BasePresenter;
 import com.aliex.commonlib.utils.ActivityManagerUtils;
 import com.aliex.commonlib.utils.DrawerToast;
 import com.aliex.commonlib.utils.LoggerUtils;
@@ -24,21 +25,28 @@ import butterknife.ButterKnife;
  * description: <br/>
  */
 
-public abstract class BaseAppCompatActivity extends RxAppCompatActivity implements IBaseView {
+public abstract class BaseAppCompatActivity<V, T extends BasePresenter<V>> extends RxAppCompatActivity {
 
     private Activity mActivity;
     private ActivityManagerUtils activityManagerUtils;
     private DrawerToast mDrawerToast;
+
+    protected T mPresenter; // Presenter 对象
+
+    protected abstract T createPresenter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
+        mPresenter = createPresenter();
+        mPresenter.attachView((V) this);
         mActivity = this;
         activityManagerUtils = ActivityManagerUtils.getInstance();
         activityManagerUtils.pushActivity(this);
         mDrawerToast = DrawerToast.getInstance(getApplicationContext());
+
     }
 
     protected abstract int getLayoutId();
@@ -56,6 +64,7 @@ public abstract class BaseAppCompatActivity extends RxAppCompatActivity implemen
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mPresenter.detachView();
         activityManagerUtils.popAnyActivity(this);
     }
 }

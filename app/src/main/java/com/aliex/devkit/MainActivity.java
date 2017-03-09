@@ -16,15 +16,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.aliex.basekit.base.activity.BaseAppCompatActivity;
+import com.aliex.basekit.base.presenter.BasePresenter;
 import com.aliex.devkit.adapter.FragmentAdapter;
 import com.aliex.devkit.fragment.DispFragment;
+import com.aliex.devkit.iview.IMainView;
+import com.aliex.devkit.presenter.MainPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseAppCompatActivity<IMainView, MainPresenter>
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -38,6 +42,11 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationVie
     FloatingActionButton fab;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+
+    @Override
+    protected MainPresenter createPresenter() {
+        return new MainPresenter(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +72,10 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationVie
 
     private void initViewPager() {
         List<String> titles = new ArrayList<>();
-        titles.add("精选");
-        titles.add("体育");
-        titles.add("巴萨");
-        titles.add("购物");
+        titles.add("Tab1");
+        titles.add("Tab2");
+        titles.add("Tab3");
+        titles.add("Tab4");
         for (int i = 0; i < titles.size(); i++) {
             tabs.addTab(tabs.newTab().setText(titles.get(i)));
         }
@@ -145,18 +154,4 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationVie
         return true;
     }
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showExceptions(Throwable ex) {
-
-    }
 }
