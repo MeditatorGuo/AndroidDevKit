@@ -6,12 +6,5 @@ package com.aliex.basekit.base.iview;
  * description: <br/>
  */
 
-public interface IBaseView {
-
-    void showLoading();
-
-    void hideLoading();
-
-    void showExceptions(Throwable ex);
-
+public interface IBaseView<T> {
 }

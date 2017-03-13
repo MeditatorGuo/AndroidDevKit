@@ -1,7 +1,5 @@
 package com.aliex.basekit.base.presenter;
 
-import android.content.Context;
-
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
@@ -33,13 +31,5 @@ public abstract class BasePresenter<T> {
             mViewRef = null;
         }
     }
-
-    protected Context mContext;
-
-    public BasePresenter(Context context) {
-        this.mContext = context;
-    }
-
-    public abstract Throwable doError(Throwable e);
 
 }

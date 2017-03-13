@@ -15,8 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.aliex.basekit.base.activity.BaseAppCompatActivity;
-import com.aliex.basekit.base.presenter.BasePresenter;
+import com.aliex.devkit.activity.BaseAppCompatActivity;
 import com.aliex.devkit.adapter.FragmentAdapter;
 import com.aliex.devkit.fragment.DispFragment;
 import com.aliex.devkit.iview.IMainView;
