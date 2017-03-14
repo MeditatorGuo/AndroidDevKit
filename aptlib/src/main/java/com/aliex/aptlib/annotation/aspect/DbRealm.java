@@ -1,16 +1,16 @@
-package com.aliex.commonlib.aspect;
-
-/**
- * 申请系统权限注解
- */
+package com.aliex.aptlib.annotation.aspect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
+/**
+ * Created by baixiaokang on 17/1/24.
+ * 数据库存库注解
+ */
+
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
-public @interface Permission {
-    String[] value();
+public @interface DbRealm {
 }

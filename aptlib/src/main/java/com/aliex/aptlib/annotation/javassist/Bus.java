@@ -1,5 +1,8 @@
-package com.aliex.commonlib.javassist;
+package com.aliex.aptlib.annotation.javassist;
 
+/**
+ * Created by baixiaokang on 16/11/15.
+ */
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
