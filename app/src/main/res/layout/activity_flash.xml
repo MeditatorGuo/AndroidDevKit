@@ -9,7 +9,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/holo_blue_light" />
+            android:background="@mipmap/splash_background" />
 
         <TextView
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:lineSpacingMultiplier="1.4"
-            android:text="穿越茫茫人海\n寻找属于我们的那一份宁静"
+            android:text="面朝大海，春暖花开"
             android:textColor="@android:color/darker_gray"
             android:textSize="16sp" />
 

@@ -9,5 +9,7 @@ package com.aliex.devkit;
 public class Const {
 
     public static final String HOME = "home";
+    public static final String TYPE = "type";
+    public static final String OPEN_TYPE = "公开";
 
 }

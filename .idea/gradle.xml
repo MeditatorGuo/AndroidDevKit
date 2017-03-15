@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/aptlib" />
             <option value="$PROJECT_DIR$/basekit" />
             <option value="$PROJECT_DIR$/commonlib" />
+            <option value="$PROJECT_DIR$/plugin" />
             <option value="$PROJECT_DIR$/uihelper" />
           </set>
         </option>

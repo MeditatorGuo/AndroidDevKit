@@ -1,4 +1,4 @@
-package com.aliex.uilib;
+package com.aliex.uilibs;
 
 import org.junit.Test;
 

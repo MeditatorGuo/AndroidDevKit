@@ -1,7 +1,6 @@
 package com.aliex.basekit.base.model;
 
 import android.content.Context;
-import android.view.View;
 
 import com.trello.rxlifecycle.LifecycleProvider;
 import com.trello.rxlifecycle.android.ActivityEvent;

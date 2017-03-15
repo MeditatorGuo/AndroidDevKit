@@ -4,11 +4,8 @@ import java.lang.reflect.ParameterizedType;
 
 import com.aliex.basekit.base.iview.IBaseView;
 import com.aliex.basekit.base.presenter.BasePresenter;
-import com.aliex.commonlib.utils.ActivityManagerUtils;
-import com.aliex.commonlib.utils.DrawerToast;
 import com.aliex.devkit.utils.InstanceUtil;
 
-import android.app.Activity;
 import android.databinding.ViewDataBinding;
 
 /**
@@ -28,7 +25,7 @@ public abstract class BaseAppCompatActivity<P extends BasePresenter, B extends V
             Class mPresenterClass = (Class) ((ParameterizedType) (this.getClass().getGenericSuperclass()))
                     .getActualTypeArguments()[0];
             mPresenter = InstanceUtil.getInstance(mPresenterClass);
-            mPresenter.attachView(this);
+            mPresenter.onAttach(this);
         }
     }
 
@@ -36,7 +33,7 @@ public abstract class BaseAppCompatActivity<P extends BasePresenter, B extends V
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null)
-            mPresenter.detachView();
+            mPresenter.onDetach();
     }
 
 }

@@ -1,1 +1,1 @@
-include ':app', ':basekit', ':commonlib', ':uihelper', ':aptlib', ':annotation'
+include ':app', ':commonlib', ':aptlib', ':annotation', ':basekit', ':uihelper', ':plugin'

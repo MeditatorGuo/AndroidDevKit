@@ -13,10 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.aliex.aptlib.TRouter;
 import com.aliex.commonlib.utils.MPermissionUtils;
 import com.aliex.devkit.R;
 import com.aliex.devkit.utils.SpUtil;
-import com.aliex.uilib.widget.SwipeBackLayout;
+import com.aliex.uilibs.widget.SwipeBackLayout;
 import com.trello.rxlifecycle.LifecycleProvider;
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.RxLifecycle;
@@ -63,6 +64,7 @@ public abstract class DataBindingActivity<B extends ViewDataBinding> extends App
         mViewBinding = DataBindingUtil.bind(rootView);
         this.setContentView(getLayoutId(), rootView);
         initTransitionView();
+        TRouter.bind(this);
         mContext = this;
         initPresenter();
         initToolBar();

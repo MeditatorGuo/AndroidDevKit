@@ -1,6 +1,7 @@
 package com.aliex.devkit.ui.main;
 
 import com.aliex.aptlib.TRouter;
+import com.aliex.commonlib.utils.StatusBarUtil;
 import com.aliex.devkit.event.EventBus;
 import com.aliex.devkit.event.EventTags;
 import com.aliex.commonlib.utils.AnimationUtils;
@@ -18,7 +19,7 @@ import android.view.animation.AlphaAnimation;
  * description: <br/>
  */
 
-public class FlashActivity extends DataBindingActivity<ActivityFlashBinding> {
+public class SplashActivity extends DataBindingActivity<ActivityFlashBinding> {
     @Override
     public int getLayoutId() {
         return R.layout.activity_flash;
@@ -31,7 +32,7 @@ public class FlashActivity extends DataBindingActivity<ActivityFlashBinding> {
 
     @Bus(EventTags.FLASH_INIT_UI)
     public void initUI() {
-        // StatusBarUtil.setTranslucentBackground(this);
+        StatusBarUtil.setTranslucentBackground(this);
         AlphaAnimation anim = new AlphaAnimation(0.8f, 0.1f);
         anim.setDuration(5000);
         mViewBinding.view.startAnimation(anim);

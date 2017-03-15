@@ -1,5 +1,5 @@
 
-package com.aliex.uilib.widget;
+package com.aliex.uilibs.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,7 +33,6 @@ public class SwipeBackLayout extends ViewGroup {
     public void setDragEdge(DragEdge dragEdge) {
         this.dragEdge = dragEdge;
     }
-
 
     private static final double AUTO_FINISHED_SPEED_LIMIT = 2000.0;
 
@@ -142,7 +141,8 @@ public class SwipeBackLayout extends ViewGroup {
             View child;
             for (int i = 0; i < count; i++) {
                 child = viewGroup.getChildAt(i);
-                if (child instanceof AbsListView || child instanceof ScrollView || child instanceof ViewPager || child instanceof WebView) {
+                if (child instanceof AbsListView || child instanceof ScrollView || child instanceof ViewPager
+                        || child instanceof WebView) {
                     scrollChild = child;
                     return;
                 }
@@ -154,7 +154,8 @@ public class SwipeBackLayout extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int width = getMeasuredWidth();
         int height = getMeasuredHeight();
-        if (getChildCount() == 0) return;
+        if (getChildCount() == 0)
+            return;
 
         View child = getChildAt(0);
 
@@ -175,8 +176,10 @@ public class SwipeBackLayout extends ViewGroup {
         }
 
         if (getChildCount() > 0) {
-            int measureWidth = MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), MeasureSpec.EXACTLY);
-            int measureHeight = MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), MeasureSpec.EXACTLY);
+            int measureWidth = MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),
+                    MeasureSpec.EXACTLY);
+            int measureHeight = MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(),
+                    MeasureSpec.EXACTLY);
             getChildAt(0).measure(measureWidth, measureHeight);
         }
     }
@@ -217,7 +220,7 @@ public class SwipeBackLayout extends ViewGroup {
         boolean handled = false;
         ensureTarget();
         if (isEnabled()) {
-            if (ev.getX() < 100)//当x<100,即左侧边缘才起作用
+            if (ev.getX() < 100)// 当x<100,即左侧边缘才起作用
                 handled = viewDragHelper.shouldInterceptTouchEvent(ev);
         } else {
             viewDragHelper.cancel();
@@ -315,10 +318,11 @@ public class SwipeBackLayout extends ViewGroup {
 
         @Override
         public void onViewDragStateChanged(int state) {
-            if (state == draggingState) return;
+            if (state == draggingState)
+                return;
 
-            if ((draggingState == ViewDragHelper.STATE_DRAGGING || draggingState == ViewDragHelper.STATE_SETTLING) &&
-                    state == ViewDragHelper.STATE_IDLE) {
+            if ((draggingState == ViewDragHelper.STATE_DRAGGING || draggingState == ViewDragHelper.STATE_SETTLING)
+                    && state == ViewDragHelper.STATE_IDLE) {
                 // the view stopped from moving.
                 if (draggingOffset == getDragRange()) {
                     finish();
@@ -327,7 +331,6 @@ public class SwipeBackLayout extends ViewGroup {
 
             draggingState = state;
         }
-
 
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
@@ -344,12 +347,14 @@ public class SwipeBackLayout extends ViewGroup {
                     break;
             }
 
-            //The proportion of the sliding.
+            // The proportion of the sliding.
             float fractionAnchor = (float) draggingOffset / finishAnchor;
-            if (fractionAnchor >= 1) fractionAnchor = 1;
+            if (fractionAnchor >= 1)
+                fractionAnchor = 1;
 
             float fractionScreen = (float) draggingOffset / (float) getDragRange();
-            if (fractionScreen >= 1) fractionScreen = 1;
+            if (fractionScreen >= 1)
+                fractionScreen = 1;
 
             if (swipeBackListener != null) {
                 swipeBackListener.onViewPositionChanged(fractionAnchor, fractionScreen);
@@ -358,9 +363,11 @@ public class SwipeBackLayout extends ViewGroup {
 
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
-            if (draggingOffset == 0) return;
+            if (draggingOffset == 0)
+                return;
 
-            if (draggingOffset == getDragRange()) return;
+            if (draggingOffset == getDragRange())
+                return;
 
             boolean isBack = false;
 
@@ -431,8 +438,10 @@ public class SwipeBackLayout extends ViewGroup {
         /**
          * Return scrolled fraction of the layout.
          *
-         * @param fractionAnchor relative to the anchor.
-         * @param fractionScreen relative to the screen.
+         * @param fractionAnchor
+         *            relative to the anchor.
+         * @param fractionScreen
+         *            relative to the screen.
          */
         void onViewPositionChanged(float fractionAnchor, float fractionScreen);
 

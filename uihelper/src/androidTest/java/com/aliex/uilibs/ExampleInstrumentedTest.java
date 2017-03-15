@@ -1,4 +1,4 @@
-package com.aliex.uilib;
+package com.aliex.uilibs;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.aliex.uilib.test", appContext.getPackageName());
+        assertEquals("com.aliex.uilibs.test", appContext.getPackageName());
     }
 }
