@@ -19,11 +19,6 @@ import android.databinding.ViewDataBinding;
 
 public abstract class BaseAppCompatActivity<P extends BasePresenter, B extends ViewDataBinding>
         extends DataBindingActivity<B> {
-
-    private Activity mActivity;
-    private ActivityManagerUtils activityManagerUtils;
-    private DrawerToast mDrawerToast;
-
     public P mPresenter;
 
     @Override

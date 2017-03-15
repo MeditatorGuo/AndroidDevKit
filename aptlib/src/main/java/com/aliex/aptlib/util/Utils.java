@@ -1,6 +1,7 @@
 package com.aliex.aptlib.util;
 
-import com.squareup.javapoet.ClassName;
+import static javax.lang.model.element.Modifier.ABSTRACT;
+import static javax.lang.model.element.Modifier.PUBLIC;
 
 import javax.annotation.processing.Messager;
 import javax.lang.model.element.ElementKind;
@@ -9,8 +10,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
-import static javax.lang.model.element.Modifier.ABSTRACT;
-import static javax.lang.model.element.Modifier.PUBLIC;
+import com.squareup.javapoet.ClassName;
 
 public class Utils {
     public static final String PackageName = "com.aliex.aptlib";

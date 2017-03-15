@@ -1,5 +1,7 @@
 package com.aliex.devkit.utils;
 
+import com.aliex.aptlib.InstanceFactory;
+
 public class InstanceUtil {
 
     /**

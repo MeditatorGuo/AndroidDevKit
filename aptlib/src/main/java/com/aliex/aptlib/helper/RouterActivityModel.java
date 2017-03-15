@@ -5,16 +5,14 @@ import java.util.List;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 
-
-
 public class RouterActivityModel {
-    boolean isNeedBind;//是否需要对目标类进行数据绑定，只有有传参数的和有转场需要初始化数据绑定
-    TypeElement element;//当前的Activity
-    String actionName;//当前Activity的ActionName
-    String SceneTransitionElementName;//转场元素View的名称
-    Element SceneTransitionElement;//转场元素View的Element
-    List<Element> ExtraElements;//需要传递的参数的Extra元素Element列表
-    List<String> ExtraElementKeys;//需要传递的参数的Extra元素Element列表的Key列表
+    boolean isNeedBind;// 是否需要对目标类进行数据绑定，只有有传参数的和有转场需要初始化数据绑定
+    TypeElement element;// 当前的Activity
+    String actionName;// 当前Activity的ActionName
+    String SceneTransitionElementName;// 转场元素View的名称
+    Element SceneTransitionElement;// 转场元素View的Element
+    List<Element> ExtraElements;// 需要传递的参数的Extra元素Element列表
+    List<String> ExtraElementKeys;// 需要传递的参数的Extra元素Element列表的Key列表
 
     public String getSceneTransitionElementName() {
         return SceneTransitionElementName;

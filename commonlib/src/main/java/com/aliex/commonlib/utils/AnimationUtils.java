@@ -344,6 +344,31 @@ public class AnimationUtils {
      */
     public static ScaleAnimation getAmplificationAnimation(Animation.AnimationListener animationListener) {
         return getAmplificationAnimation(DEFAULT_ANIMATION_DURATION, animationListener);
+    }
 
+
+
+    public static void setAnimationListener(Animation aninm, final AnimListener listener) {
+        aninm.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                listener.onAnimFinish();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
+
+    public interface AnimListener {
+        void onAnimFinish();
     }
 }

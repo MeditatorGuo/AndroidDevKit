@@ -1,9 +1,9 @@
 package com.aliex.aptlib.inter;
 
 
-import com.aliex.aptlib.AnnotationProcessor;
-
 import javax.annotation.processing.RoundEnvironment;
+
+import com.aliex.aptlib.AnnotationProcessor;
 
 /**
  * 注解处理器接口

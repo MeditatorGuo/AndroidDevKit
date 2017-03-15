@@ -1,12 +1,12 @@
 package com.aliex.aptlib.processor;
 
 import com.aliex.aptlib.AnnotationProcessor;
-import com.aliex.aptlib.annotation.apt.Extra;
-import com.aliex.aptlib.annotation.apt.Router;
-import com.aliex.aptlib.annotation.apt.SceneTransition;
 import com.aliex.aptlib.helper.RouterActivityModel;
 import com.aliex.aptlib.inter.IProcessor;
 import com.aliex.aptlib.util.Utils;
+import com.apt.annotation.apt.Extra;
+import com.apt.annotation.apt.Router;
+import com.apt.annotation.apt.SceneTransition;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.JavaFile;
@@ -29,6 +29,12 @@ import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 
+/**
+ * author: Aliex <br/>
+ * created on: 2017/3/14 <br/>
+ * description: <br/>
+ */
+
 public class RouterProcessor implements IProcessor {
     @Override
     public void process(RoundEnvironment roundEnv, AnnotationProcessor mAbstractProcessor) {
@@ -44,12 +50,11 @@ public class RouterProcessor implements IProcessor {
         List<ClassName> mList = new ArrayList<>();
         CodeBlock.Builder blockBuilderGo = CodeBlock.builder();
         CodeBlock.Builder blockBuilderBind = CodeBlock.builder();
-        ClassName appClassName = ClassName.get("com", "App");
+        ClassName appClassName = ClassName.get("com.aliex.devkit", "BaseApplication");
         blockBuilderGo.addStatement("$T.getAppContext().mCurActivityExtra=extra", appClassName);
         blockBuilderGo.addStatement("Activity mContext=$T.getAppContext().getCurActivity()", appClassName);
         blockBuilderGo.beginControlFlow(" switch (name)");// 括号开始
         blockBuilderBind.beginControlFlow(" switch (mContext.getClass().getSimpleName())");// 括号开始
-
         List<RouterActivityModel> mRouterActivityModels = new ArrayList<>();
         try {
             for (TypeElement element : ElementFilter.typesIn(roundEnv.getElementsAnnotatedWith(Router.class))) {
@@ -167,5 +172,6 @@ public class RouterProcessor implements IProcessor {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }
