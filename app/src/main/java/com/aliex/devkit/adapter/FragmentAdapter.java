@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.aliex.devkit.ui.home.ArticleFragment;
+
 import java.util.List;
 
 /**
@@ -14,13 +16,18 @@ import java.util.List;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
 
-    private List<Fragment> mFragments;
-    private List<String> mTitles;
+    private List<ArticleFragment> mFragments;
+    private String[] mTitles;
 
-    public FragmentAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
+    public static FragmentAdapter newInstance(FragmentManager fm, List<ArticleFragment> fragments, String[] titles) {
+        FragmentAdapter mFragmentAdapter = new FragmentAdapter(fm);
+        mFragmentAdapter.mFragments = fragments;
+        mFragmentAdapter.mTitles = titles;
+        return mFragmentAdapter;
+    }
+
+    public FragmentAdapter(FragmentManager fm) {
         super(fm);
-        mFragments = fragments;
-        mTitles = titles;
     }
 
     @Override
@@ -35,6 +42,6 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mTitles.get(position);
+        return mTitles[position];
     }
 }

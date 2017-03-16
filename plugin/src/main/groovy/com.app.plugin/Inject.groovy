@@ -42,11 +42,11 @@ public class Inject {
                             if (BusHelper.ON_CREATE.contains(methodName)) mBusInfo.setOnCreateMethod(ctmethod)
                             if (BusHelper.ON_DESTROY.contains(methodName)) mBusInfo.setOnDestroyMethod(ctmethod)
                             for (Annotation mAnnotation : ctmethod.getAnnotations()) {
-                                if (mAnnotation.annotationType().canonicalName.equals(BusHelper.OkBusRegisterAnnotation))
+                                if (mAnnotation.annotationType().canonicalName.equals(BusHelper.EventBusRegisterAnnotation))
                                     mBusInfo.setBusRegisterMethod(ctmethod)
-                                if (mAnnotation.annotationType().canonicalName.equals(BusHelper.OkBusUnRegisterAnnotation))
+                                if (mAnnotation.annotationType().canonicalName.equals(BusHelper.EventBusUnRegisterAnnotation))
                                     mBusInfo.setBusUnRegisterMethod(ctmethod)
-                                if (mAnnotation.annotationType().canonicalName.equals(BusHelper.OkBusAnnotation)) {
+                                if (mAnnotation.annotationType().canonicalName.equals(BusHelper.EventBusAnnotation)) {
                                     project.logger.error " method:" + c.getName() + " -" + ctmethod.getName()
                                     mBusInfo.methods.add(ctmethod)
                                     mBusInfo.annotations.add(mAnnotation)

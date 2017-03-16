@@ -12,9 +12,9 @@ import java.lang.annotation.Annotation
 
 
 public class BusHelper {
-    final static String OkBusAnnotation = "com.apt.annotation.javassist.Bus"
-    final static String OkBusRegisterAnnotation = "com.apt.annotation.javassist.BusRegister"
-    final static String OkBusUnRegisterAnnotation = "com.apt.annotation.javassist.BusUnRegister"
+    final static String EventBusAnnotation = "com.apt.annotation.javassist.Bus"
+    final static String EventBusRegisterAnnotation = "com.apt.annotation.javassist.BusRegister"
+    final static String EventBusUnRegisterAnnotation = "com.apt.annotation.javassist.BusUnRegister"
     static def ON_CREATE = ['onCreate', "onActivityCreated"] as String[]
     static def ON_DESTROY = 'onDestroy'
 

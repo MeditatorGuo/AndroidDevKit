@@ -2,6 +2,7 @@ import com.app.plugin.JavassistPlugin
 
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'realm-android'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -55,8 +56,8 @@ dependencies {
     compile 'com.android.support:percent:25.2.0'
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
+    compile 'com.github.todou:appbarspring:1.0.3'
     testCompile 'junit:junit:4.12'
-
     compile project(':commonlib')
     annotationProcessor project(':annotation')
     compile project(':aptlib')

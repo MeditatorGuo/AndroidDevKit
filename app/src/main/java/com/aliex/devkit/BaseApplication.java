@@ -11,6 +11,8 @@ import com.aliex.devkit.utils.SpUtil;
 import java.util.HashMap;
 import java.util.Stack;
 
+import io.realm.Realm;
+
 /**
  * author: Aliex <br/>
  * created on: 2017/3/14 <br/>
@@ -26,6 +28,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
+        Realm.init(this);
         SpUtil.init(this);
         AppCompatDelegate.setDefaultNightMode(
                 SpUtil.isNight() ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);

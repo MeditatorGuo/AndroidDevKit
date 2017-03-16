@@ -113,7 +113,7 @@
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/button_ripple_blue"
                 android:onClick="onClick"
-                app:layout_behavior="com.view.behavior.MyFabBehavior"
+                app:layout_behavior="com.aliex.devkit.behavior.MyFabBehavior"
                 app:srcCompat="@drawable/ic_add" />
 
         </android.support.design.widget.CoordinatorLayout>

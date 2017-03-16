@@ -1,14 +1,14 @@
 package com.aliex.devkit.ui.main;
 
 import com.aliex.aptlib.TRouter;
-import com.aliex.commonlib.utils.StatusBarUtil;
-import com.aliex.devkit.event.EventBus;
-import com.aliex.devkit.event.EventTags;
 import com.aliex.commonlib.utils.AnimationUtils;
+import com.aliex.commonlib.utils.StatusBarUtil;
 import com.aliex.devkit.Const;
 import com.aliex.devkit.R;
 import com.aliex.devkit.activity.DataBindingActivity;
 import com.aliex.devkit.databinding.ActivityFlashBinding;
+import com.aliex.devkit.event.EventBus;
+import com.aliex.devkit.event.EventTags;
 import com.apt.annotation.javassist.Bus;
 
 import android.view.animation.AlphaAnimation;

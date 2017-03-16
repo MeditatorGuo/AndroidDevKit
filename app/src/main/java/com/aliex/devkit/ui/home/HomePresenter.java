@@ -16,11 +16,6 @@ import com.apt.annotation.javassist.BusUnRegister;
  */
 @InstanceFactory
 public class HomePresenter extends HomeContract.Presenter {
-    @Override
-    public void getTabList() {
-        String[] mTabs = { "民谣", "摇滚", "流行", "故事" };
-        EventBus.getInstance().onEvent(EventTags.SHOW_TAB_LIST, mTabs);
-    }
 
     @Override
     public void onAttach(HomeContract.View view) {
@@ -28,6 +23,17 @@ public class HomePresenter extends HomeContract.Presenter {
         initEvent();
         getTabList();
         getUserInfo();
+    }
+
+    @Override
+    public void getTabList() {
+        String[] mTabs = { "民谣", "摇滚", "流行", "故事" };
+        EventBus.getInstance().onEvent(EventTags.SHOW_TAB_LIST, mTabs);
+    }
+
+    @Bus(EventTags.SHOW_TAB_LIST)
+    public void showTabList(String[] tabs) {
+        getView().showTabList(tabs);
     }
 
     @Override

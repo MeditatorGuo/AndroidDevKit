@@ -13,11 +13,6 @@ import android.view.animation.Interpolator;
 
 import java.util.List;
 
-
-/**
- * Created by baixiaokang on 16/12/15.
- */
-
 public class MyCommentBehavior extends CoordinatorLayout.Behavior<View> {
 
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();

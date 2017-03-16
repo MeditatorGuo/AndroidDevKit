@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
 
-/**
- * Created by baixiaokang on 16/12/15.
- */
 
 public class MyFabBehavior extends CoordinatorLayout.Behavior<View> {
 

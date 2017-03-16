@@ -30,13 +30,13 @@ public class LogTimeHelper {
         bodyStr.append("{");
         bodyStr.append(prefix);
         bodyStr.append(newMethodName + "(" + '$$' + ");\n");
-//调用原有代码，类似于method();($$)表示所有的参数
+        //调用原有代码，类似于method();($$)表示所有的参数
         bodyStr.append(postfix);
         bodyStr.append(outputStr);
         bodyStr.append("}");
         newMethod.setBody(bodyStr.toString());//替换新方法
-        project.logger.error "狸猫换太子!" + className + "." + methodName + "调用" + newMethodName
-        c.addMethod(newMethod);//增加新方法，在这里已经狸猫换太子
+        project.logger.error  className + "." + methodName + "调用" + newMethodName
+        c.addMethod(newMethod);//增加新方法
         project.logger.error "增加新方法!" + className + "新增" + methodName
         c.writeFile(path)
         c.detach()

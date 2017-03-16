@@ -13,9 +13,9 @@ public class Utils {
      */
     static void importBaseClass(ClassPool pool) {
         pool.importPackage(LogTimeHelper.LogTimeAnnotation);
-        pool.importPackage(BusHelper.OkBusAnnotation);
-        pool.importPackage(BusHelper.OkBusRegisterAnnotation);
-        pool.importPackage(BusHelper.OkBusUnRegisterAnnotation);
+        pool.importPackage(BusHelper.EventBusAnnotation);
+        pool.importPackage(BusHelper.EventBusRegisterAnnotation);
+        pool.importPackage(BusHelper.EventBusUnRegisterAnnotation);
         pool.importPackage("android.os.Bundle");
         pool.importPackage("com.aliex.devkit.event.EventBus")
         pool.importPackage("com.aliex.devkit.event.Event")

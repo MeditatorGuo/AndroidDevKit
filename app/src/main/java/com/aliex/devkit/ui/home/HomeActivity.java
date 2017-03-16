@@ -5,15 +5,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.aliex.devkit.Const;
 import com.aliex.devkit.R;
 import com.aliex.devkit.activity.BaseAppCompatActivity;
+import com.aliex.devkit.adapter.FragmentAdapter;
 import com.aliex.devkit.databinding.ActivityMainBinding;
 import com.aliex.devkit.model.User;
 import com.apt.annotation.apt.Router;
+
+import rx.Observable;
 
 /**
  * author: Aliex <br/>
@@ -49,6 +50,11 @@ public class HomeActivity extends BaseAppCompatActivity<HomePresenter, ActivityM
 
     @Override
     public void showTabList(String[] mTabs) {
+        Observable.from(mTabs).map(ArticleFragment::newInstance).toList()
+                .map(fragments -> FragmentAdapter.newInstance(getSupportFragmentManager(), fragments, mTabs))
+                .subscribe(mFragmentAdapter -> mViewBinding.viewpager.setAdapter(mFragmentAdapter));
+
+        mViewBinding.tabs.setupWithViewPager(mViewBinding.viewpager);
 
     }
 
