@@ -22,7 +22,6 @@ public class HomePresenter extends HomeContract.Presenter {
         super.onAttach(view);
         initEvent();
         getTabList();
-        getUserInfo();
     }
 
     @Override
@@ -36,31 +35,14 @@ public class HomePresenter extends HomeContract.Presenter {
         getView().showTabList(tabs);
     }
 
-    @Override
-    @BusUnRegister
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    @Override
-    public void getUserInfo() {
-        User user = SpUtil.getUser();
-        if (user != null)
-            getView().initUserInfo(user);
-    }
-
     @BusRegister
     private void initEvent() {
     }
 
-    @Bus(EventTags.ON_RELEASE_OPEN)
-    public void onRelease() {
-        getView().onOpenRelease();
-    }
-
-    @Bus(EventTags.ON_USER_LOGIN)
-    public void onLogin(User user) {
-        getView().initUserInfo(user);
+    @Override
+    @BusUnRegister
+    public void onDetach() {
+        super.onDetach();
     }
 
 }

@@ -14,6 +14,7 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 
+import com.aliex.aptlib.processor.ApiFactoryProcessor;
 import com.aliex.aptlib.processor.InstanceProcessor;
 import com.aliex.aptlib.processor.RouterProcessor;
 import com.google.auto.service.AutoService;
@@ -40,6 +41,7 @@ public class AnnotationProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         new InstanceProcessor().process(roundEnv, this);
         new RouterProcessor().process(roundEnv, this);
+        new ApiFactoryProcessor().process(roundEnv, this);
         return true;
     }
 }

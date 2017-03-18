@@ -23,7 +23,7 @@ import rx.Observable;
 /**
  * @Description: 提供的系列接口
  */
-public interface ApiService {
+public interface BaseApiService {
     @POST()
     @FormUrlEncoded
     Observable<ResponseBody> post(@Url() String url, @FieldMap Map<String, String> maps);

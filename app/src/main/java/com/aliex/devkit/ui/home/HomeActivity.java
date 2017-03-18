@@ -39,10 +39,10 @@ public class HomeActivity extends BaseAppCompatActivity<HomePresenter, ActivityM
         return R.layout.activity_main;
     }
 
-
     @Override
     public void initView() {
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mViewBinding.dlMainDrawer, R.string.drawer_open, R.string.drawer_close);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mViewBinding.dlMainDrawer,
+                R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mViewBinding.dlMainDrawer.addDrawerListener(mDrawerToggle);
         mViewBinding.nvMainNavigation.setNavigationItemSelectedListener(this);
@@ -55,16 +55,6 @@ public class HomeActivity extends BaseAppCompatActivity<HomePresenter, ActivityM
                 .subscribe(mFragmentAdapter -> mViewBinding.viewpager.setAdapter(mFragmentAdapter));
 
         mViewBinding.tabs.setupWithViewPager(mViewBinding.viewpager);
-
-    }
-
-    @Override
-    public void initUserInfo(User user) {
-
-    }
-
-    @Override
-    public void onOpenRelease() {
 
     }
 

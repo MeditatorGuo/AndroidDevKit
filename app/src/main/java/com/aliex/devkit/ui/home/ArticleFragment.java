@@ -1,17 +1,16 @@
 package com.aliex.devkit.ui.home;
 
+import com.aliex.aptlib.ApiFactory;
+import com.aliex.devkit.Const;
+import com.aliex.devkit.R;
+import com.aliex.devkit.data.LocalFactory;
+import com.aliex.devkit.helper.RecycleViewTemplet;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.aliex.devkit.Const;
-import com.aliex.devkit.R;
-import com.aliex.devkit.event.EventTags;
-import com.apt.annotation.apt.ApiFactory;
-import com.apt.annotation.javassist.Bus;
 
 /**
  * author: Aliex <br/>
@@ -20,7 +19,7 @@ import com.apt.annotation.javassist.Bus;
  */
 
 public class ArticleFragment extends Fragment {
-    private TRecyclerView mXRecyclerView;
+    private RecycleViewTemplet recycleViewTemplet;
     private String type;
 
     public static ArticleFragment newInstance(String type) {
@@ -33,22 +32,16 @@ public class ArticleFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mXRecyclerView = new TRecyclerView(getContext());
-        mXRecyclerView.setViewType(R.layout.list_item_card_main);
-        return mXRecyclerView;
-    }
-
-    @Bus(EventTags.ON_RELEASE_OPEN)
-    public void onRelease() {
-        if (TextUtils.equals(type, Const.OPEN_TYPE))
-            mXRecyclerView.getPresenter().fetch();
+        recycleViewTemplet = new RecycleViewTemplet(getContext());
+        recycleViewTemplet.setViewType(R.layout.list_item_card_main);
+        return recycleViewTemplet;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         type = getArguments().getString(Const.TYPE);
-        mXRecyclerView.getPresenter().setDbRepository(DbFactory::getAllImages)
-                .setNetRepository(ApiFactory::getAllImages).setParam(Const.TYPE, type).fetch();
+        recycleViewTemplet.getPresenter().setLocalRepository(LocalFactory::getAllImages)
+                .setRemoteRepository(ApiFactory::getAllImages).setParams(Const.TYPE, type).fetch();
     }
 }

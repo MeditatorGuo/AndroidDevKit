@@ -61,7 +61,7 @@ import rx.schedulers.Schedulers;
 
 public class GalaxyApi {
     private static Context mContext;
-    private static ApiService apiService;
+    private static BaseApiService apiService;
     private static Retrofit retrofit;
     private static Retrofit.Builder retrofitBuilder;
     private static OkHttpClient okHttpClient;
@@ -839,7 +839,7 @@ public class GalaxyApi {
             retrofitBuilder.client(okHttpClient);
             retrofit = retrofitBuilder.build();
             apiCache = apiCacheBuilder.build();
-            apiService = retrofit.create(ApiService.class);
+            apiService = retrofit.create(BaseApiService.class);
             return new GalaxyApi();
         }
 

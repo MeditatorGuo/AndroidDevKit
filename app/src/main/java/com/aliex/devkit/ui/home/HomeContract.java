@@ -13,16 +13,11 @@ import com.aliex.devkit.model.User;
 public interface HomeContract {
     interface View extends IBaseView {
         void showTabList(String[] mTabs);
-
-        void initUserInfo(User user);
-
-        void onOpenRelease();
     }
 
     abstract class Presenter extends BasePresenter<View> {
         public abstract void getTabList();
 
-        public abstract void getUserInfo();
     }
 
 }
