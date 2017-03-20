@@ -41,7 +41,7 @@ public class ArticleFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         type = getArguments().getString(Const.TYPE);
-        recycleViewTemplet.getPresenter().setLocalRepository(LocalFactory::getAllImages)
-                .setRemoteRepository(ApiFactory::getAllImages).setParams(Const.TYPE, type).fetch();
+        recycleViewTemplet.getPresenter().setLocalRepository(LocalFactory::getAllImages).setParams(Const.TYPE, type).fetch();
+               // .setRemoteRepository(ApiFactory::getAllImages).setParams(Const.TYPE, type).fetch();
     }
 }
