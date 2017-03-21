@@ -63,7 +63,7 @@ public class RecycleViewTemplet<M> extends FrameLayout implements AdapterPresent
         swipeRefresh = (SwipeRefreshLayout) layout.findViewById(R.id.swiperefresh);
         recyclerview = (RecyclerView) layout.findViewById(R.id.recyclerview);
         ll_emptyView = (LinearLayout) layout.findViewById(R.id.ll_emptyview);
-        mAdapterPresenter = new AdapterPresenter<M>(this);
+        mAdapterPresenter = new AdapterPresenter<>(this);
         swipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

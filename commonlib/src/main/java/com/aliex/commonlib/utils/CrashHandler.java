@@ -146,7 +146,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                Log.d(TAG, field.getName() + " : " + field.get(null));
             } catch (Exception e) {
                 Log.e(TAG, "an error occured when collect crash info", e);
             }
