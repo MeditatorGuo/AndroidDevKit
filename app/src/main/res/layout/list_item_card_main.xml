@@ -3,6 +3,12 @@
 
     <data>
 
+        <import type="com.aliex.devkit.helper.RouterHelper" />
+
+        <import type="com.aliex.devkit.model.DataExtra" />
+
+        <import type="com.aliex.devkit.Const" />
+
         <variable
             name="item"
             type="com.aliex.devkit.model.ImageInfo" />
@@ -14,6 +20,7 @@
         android:layout_margin="@dimen/card_margin"
         android:background="?attr/backgroundCard"
         android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{()->RouterHelper.go(Const.ARTICLE,DataExtra.getExtra(Const.HEAD_DATA,item),image)}"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="8dp">
